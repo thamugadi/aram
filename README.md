@@ -1,2 +1,2 @@
 # aram
-bootloader loading C code
+bootloader, entering protected mode and loading C code
