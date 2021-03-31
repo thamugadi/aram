@@ -1,0 +1,5 @@
+bits 32
+org 0x8000
+mov esp, 0x8F000
+
+jmp 0x1FFF
