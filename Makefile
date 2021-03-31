@@ -4,7 +4,7 @@ aram: boot0 boot1 boot2 kernel
 	dd conv=notrunc if=boot0 of=aram seek=0 bs=1 count=510
 	dd conv=notrunc if=boot1 of=aram seek=512 bs=1 count=512
 	dd conv=notrunc if=boot2 of=aram seek=1024 bs=1 count=512
-	d conv=notrunc if=kernel of=aram seek=1536 bs=1
+	dd conv=notrunc if=kernel of=aram seek=1536 bs=1
 kernel : kernel.c
 	gcc -c kernel.c -o kernel.o
 	ld --oformat binary -Ttext 0x1FFF kernel.o -o kernel
