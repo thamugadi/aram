@@ -1,7 +1,10 @@
 bits 16
-org 0x7C00
+
 mov ah, 0
 int 0x13
+
+mov ax, 0
+mov es, ax
 
 mov ah, 2
 mov al, 1
@@ -30,4 +33,4 @@ mov dh, 0
 mov bx, 0x1FFF
 int 0x13
 
-jmp 0xcafe
+jmp 0:0xcafe
