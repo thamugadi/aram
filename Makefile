@@ -1,5 +1,5 @@
 aram: boot0 boot1 boot2 kernel
-	dd conv=notrunc if=/dev/zero of=aram bs=1 count=128KiB
+	dd conv=notrunc if=/dev/zero of=aram bs=1 count=1MiB
 	(echo "0x55xAA" | xxd -r -p) | dd conv=notrunc of=aram seek=510 bs=1 count=2
 	dd conv=notrunc if=boot0 of=aram seek=0 bs=1 count=510
 	dd conv=notrunc if=boot1 of=aram seek=512 bs=1 count=512
