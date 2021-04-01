@@ -7,7 +7,7 @@ aram: boot0 boot1 boot2 kernel
 	dd conv=notrunc if=kernel of=aram seek=1536 bs=1
 kernel : kernel.c
 	gcc -c kernel.c -o kernel.o
-	ld --oformat -Ttext CAFE binary kernel.o -o kernel
+	ld --oformat binary -Ttext 0xCAFE kernel.o -o kernel
 boot2 : protected.s
 	nasm -f bin protected.s -o boot2
 boot1 : gdt.s
