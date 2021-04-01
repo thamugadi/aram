@@ -12,7 +12,7 @@ mov ch, 0
 mov cl, 2
 mov dh, 0
 
-mov bx, 0xcafe
+mov bx, 0x1000
 int 0x13
 
 mov ah, 2
@@ -21,7 +21,7 @@ mov ch, 0
 mov cl, 3
 mov dh, 0
 
-mov bx, 0x8000
+mov bx, 0x1FFF
 int 0x13
 
 mov ah, 2
@@ -30,7 +30,7 @@ mov ch, 0
 mov cl, 4
 mov dh, 0
 
-mov bx, 0x1FFF
+mov bx, 0xCAFE
 int 0x13
 
-jmp 0:0xcafe
+jmp 0:0x1000
