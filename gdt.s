@@ -1,5 +1,5 @@
 bits 16
-org 0xcafe
+org 0x1000
 
 cli
 lgdt [gdtptr]
@@ -15,7 +15,7 @@ mov fs, ax
 mov gs, ax
 mov ss, ax
 mov sp, 0xbeef
-jmp 0x8:0x8000
+jmp 0x8:0x1FFF
 
 gdt:
 db 0,0,0,0,0,0,0,0
