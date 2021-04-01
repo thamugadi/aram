@@ -10,8 +10,8 @@ kernel : kernel.c
 	ld --oformat binary kernel.o -o kernel
 boot2 : protected.s
 	nasm -f bin protected.s -o boot2
-boot1 : loadcafe.s
-	nasm -f bin loadcafe.s -o boot1
+boot1 : gdt.s
+	nasm -f bin gdt.s -o boot1
 boot0 : boot.s
 	nasm -f bin boot.s -o boot0
 clean : 
