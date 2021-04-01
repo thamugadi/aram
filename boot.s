@@ -25,7 +25,7 @@ mov bx, 0x1FFF
 int 0x13
 
 mov ah, 2
-mov al, 4
+mov al, 1024
 mov ch, 0
 mov cl, 4
 mov dh, 0
