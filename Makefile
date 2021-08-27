@@ -5,6 +5,7 @@ aram: boot0 boot1 boot2 kernel
 	dd conv=notrunc if=boot1 of=aram seek=512 bs=1 count=512
 	dd conv=notrunc if=boot2 of=aram seek=1024 bs=1 count=512
 	dd conv=notrunc if=kernel of=aram seek=1536 bs=1
+	echo "if 0x1FE doesn't contain 0x55AA, check if xxd is installed"
 kernel : kernel.c io.s
 	gcc -c kernel.c -o kernel.o
 	nasm -f elf64 io.s -o io.o
