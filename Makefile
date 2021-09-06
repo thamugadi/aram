@@ -8,16 +8,16 @@ aram: boot0 boot1 boot2 kernel
 	echo "if 0x1FE doesn't contain 0x55AA, check if xxd is installed"
 kernel : kernel.c io.s
 	gcc -c kernel.c -o kernel.o
-	nasm -f elf64 io.s -o io.o
+	as io.s -o io.o
 	ld --oformat binary -Ttext 0xCAFE kernel.o io.o -o kernel
 boot2 : protected.s
-	nasm -f elf64 protected.s -o boot2u
+	as protected.s -o boot2u
 	ld --oformat binary -Ttext 0x1FFF boot2u -o boot2
 boot1 : gdt.s
-	nasm -f elf64 gdt.s -o boot1u
+	as gdt.s -o boot1u
 	ld --oformat binary -Ttext 0x1000 boot1u -o boot1
 boot0 : boot.s
-	nasm -f elf64 boot.s -o boot0u
+	as boot.s -o boot0u
 	ld --oformat binary -Ttext 0x7C00 boot0u -o boot0
 clean :
-	rm boot0* boot1* boot2* *.o kernel aram
+	rm boot0* boot1* boot2* kernel aram
