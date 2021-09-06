@@ -20,4 +20,4 @@ boot0 : boot.s
 	as boot.s -o boot0u
 	ld --oformat binary -Ttext 0x7C00 boot0u -o boot0
 clean :
-	rm boot0* boot1* boot2* kernel aram
+	rm boot0* boot1* boot2* kernel *.o aram
