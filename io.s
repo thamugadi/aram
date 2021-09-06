@@ -1,5 +1,7 @@
-extern inp
+.intel_syntax noprefix
+.code32
+.extern inp
 inp:
-mov dword edx, [esp+4]
+mov edx, dword ptr [esp+4]
 in al, dx
 ret
