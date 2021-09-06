@@ -1,6 +1,4 @@
 bits 16
-org 0x1000
-
 cli
 lgdt [gdtptr]
 mov eax, cr0
