@@ -1,4 +1,7 @@
-extern unsigned char inp(unsigned int);
+void _start(void)
+{       clearscreen();
+        while(1);
+}
 
 void clearscreen(void)
 {
@@ -8,9 +11,4 @@ void clearscreen(void)
                 *vram = 0x0;
                 vram++;
         }
-}
-
-void _start(void)
-{        clearscreen();
-        while(1);
 }
