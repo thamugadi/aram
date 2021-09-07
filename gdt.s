@@ -22,14 +22,14 @@ gdt_cs:
 .word 0xFFFF
 .word 0x0000
 .byte 0x00
-.byte 0b10011010
+.byte 0b10011110
 .byte 0b11001111
 .byte 0x00
 gdt_ds:
 .word 0xFFFF
 .word 0x0000
 .byte 0x00
-.byte 0b10010010
+.byte 0b10010110
 .byte 0b11001111
 .byte 0x00
 gdtend:
