@@ -22,7 +22,7 @@ mov dh, 0
 mov bx, 0x1FFF
 int 0x13
 mov ah, 2
-mov al, 255 // load up to 128 KB (kernel)
+mov al, 128 // load up to 64 KB (kernel)
 mov ch, 0
 mov cl, 4
 mov dh, 0
