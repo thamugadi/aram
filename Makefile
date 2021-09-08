@@ -13,9 +13,10 @@ kernel : kernel.c io.s
 boot2 : protected.s
 	as protected.s -o boot2u
 	ld --oformat binary -Ttext 0x1FFF boot2u -o boot2
-boot1 : realmode.s
-	as realmode.s -o boot1u
-	ld --oformat binary -Ttext 0x1000 boot1u -o boot1
+boot1 : realmode.s sysenter.s
+	as realmode.s -o realmode_u
+	as sysenter.s -o sysenter_u
+	ld --oformat binary -Ttext 0x1000 realmode_u sysenter_u -o boot1
 boot0 : boot.s
 	as boot.s -o boot0u
 	ld --oformat binary -Ttext 0x7C00 boot0u -o boot0
