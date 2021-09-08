@@ -61,11 +61,3 @@ gdtend:
 gdtptr:
 .word gdtend - gdt - 1
 .int offset gdt
-
-SYSENTER_start:
-mov eax, 0xABCD
-mov ebx, eax
-mov ecx, eax
-mov edx, eax
-jmp $
-sysexit
