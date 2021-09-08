@@ -1,7 +1,24 @@
 .intel_syntax noprefix
 .code16
+
 cli
 lgdt [gdtptr]
+
+xor edx, edx
+
+mov eax, offset SYSENTER_start
+mov ecx, 0x176
+wrmsr
+
+mov eax, 0xd000
+mov ecx, 0x175
+wrmsr
+
+mov eax, 0x18
+mov ecx, 0x174
+wrmsr
+
+
 mov eax, cr0
 or al, 1
 mov cr0, eax
@@ -32,7 +49,23 @@ gdt_ds:
 .byte 0b10010010
 .byte 0b11001111
 .byte 0x00
+gdt_cs_ring0:
+.word 0xFFFF
+.word 0x0000
+.byte 0x00
+.byte 0b10011010
+.byte 0b11001001
+.byte 0x00
+
 gdtend:
 gdtptr:
 .word gdtend - gdt - 1
-.int gdt
+.int offset gdt
+
+SYSENTER_start:
+mov eax, 0xABCD
+mov ebx, eax
+mov ecx, eax
+mov edx, eax
+jmp $
+sysexit
