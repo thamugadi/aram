@@ -8,7 +8,7 @@ void clearscreen(void)
         unsigned char* vram = 0xB8000;
         while (vram < 0xBFFFF)
         {
-                *vram = 0x0;
+                *vram = 0x12;
                 vram++;
         }
 }
