@@ -1,4 +1,8 @@
 *.elf
 *.o
 *_u
+boot0
+boot1
+boot2
+kernel
 aram
