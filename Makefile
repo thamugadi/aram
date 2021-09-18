@@ -11,14 +11,14 @@ kernel : kernel.c io.s
 	as io.s -o io.o
 	ld --oformat binary -Ttext 0xCAFE kernel.o io.o -o kernel
 boot2 : protected.s
-	as protected.s -o boot2u
-	ld --oformat binary -Ttext 0x1FFF boot2u -o boot2
+	as protected.s -o boot2_u
+	ld --oformat binary -Ttext 0x1FFF boot2_u -o boot2
 boot1 : realmode.s sysenter.s
 	as realmode.s -o realmode_u
 	as sysenter.s -o sysenter_u
 	ld --oformat binary -Ttext 0x1000 realmode_u sysenter_u -o boot1
 boot0 : boot.s
-	as boot.s -o boot0u
-	ld --oformat binary -Ttext 0x7C00 boot0u -o boot0
+	as boot.s -o boot0_u
+	ld --oformat binary -Ttext 0x7C00 boot0_u -o boot0
 clean :
-	rm boot0* boot1* boot2* kernel *.o *_u aram
+	rm boot0 boot1 boot2 kernel *_u *.o aram
