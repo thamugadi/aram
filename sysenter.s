@@ -10,6 +10,7 @@ cmp ebx, 0xaaaa
 je read_keyboard_input
 cmp ebx, 0xbbbb
 je read_wait_keyboard
+mov ecx, 0x8F000
 sysexit
 
 
@@ -19,6 +20,7 @@ input:
 xchg edx, ecx
 in eax, dx
 xchg edx, ecx
+mov ecx, 0x8F000
 sysexit
 read_keyboard_input:
 in eax, 0x64
@@ -27,11 +29,13 @@ and dword ptr [esp], 1
 cmp dword ptr [esp], 0
 je read_keyboard_input
 in eax, 0x60
+mov ecx, 0x8F000
 sysexit
 read_wait_keyboard:
 in eax, 0x60
 cmp eax, 0
 je read_wait_keyboard
+mov ecx, 0x8F000
 sysexit
 
 
