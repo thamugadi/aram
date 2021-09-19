@@ -1,8 +1,4 @@
+*.bin
 *.elf
 *.o
-*_u
-boot0
-boot1
-boot2
-userland
 aram
