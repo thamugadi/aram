@@ -4,5 +4,5 @@
 boot0
 boot1
 boot2
-kernel
+userland
 aram
