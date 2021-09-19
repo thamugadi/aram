@@ -1,2 +1,2 @@
 # aram
-bootloader, entering protected mode and loading C code
+Bootloader loading a very basic kernel
