@@ -7,8 +7,8 @@ aram: boot0.bin boot1.bin boot2.bin userland.bin
 	dd conv=notrunc if=userland.bin of=aram seek=1536 bs=1
 	echo "if 0x1FE doesn't contain 0x55AA, check if xxd is installed"
 userland.bin : userland.c 
-	gcc -c userland.c -o userland.o
-	ld --oformat binary -Ttext 0xCAFE userland.o -o userland.bin
+	gcc -c -masm=intel userland.c -o userland.o
+	ld --oformat binary -Ttext 0xCAFE -e _start userland.o -o userland.bin
 boot2.bin : protected.s
 	as protected.s -o boot2.elf
 	ld --oformat binary -Ttext 0x1FFF boot2.elf -o boot2.bin
