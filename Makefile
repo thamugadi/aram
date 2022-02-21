@@ -20,3 +20,5 @@ boot0.bin : boot.s
 	ld --oformat binary -Ttext 0x7C00 boot0.elf -o boot0.bin
 clean :
 	rm *.bin *.elf *.o aram
+run : 
+	qemu-system-i386 aram

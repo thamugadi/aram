@@ -1,6 +1,7 @@
 .intel_syntax noprefix
-.include "macro.s"
 .code16
+.include "macro.s"
+
 cli
 lgdt [gdtptr]
 
@@ -36,12 +37,7 @@ jmp 0x8:0x1FFF
 gdt:
 .byte 0,0,0,0,0,0,0,0
 gdt_cs:
-.word 0xFFFF
-.word 0x0000
-.byte 0x00
-.byte 0b10011010
-.byte 0b11001111
-.byte 0x00
+.gdt_entry 0x0000ffff 0 0b10011010 0b1100
 gdt_ds:
 .word 0xFFFF
 .word 0x0000
