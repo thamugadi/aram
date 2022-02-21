@@ -1,6 +1,6 @@
 .intel_syntax noprefix
+.include "macro.s"
 .code16
-
 cli
 lgdt [gdtptr]
 
