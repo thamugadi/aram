@@ -1,2 +1,2 @@
 # aram
-Bootloader loading a very basic kernel
+(WIP) Bootloader loading a very basic kernel
