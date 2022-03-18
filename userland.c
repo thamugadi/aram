@@ -1,27 +1,33 @@
 #define LINES      25
 #define COLUMNS    80
-#define LINEPTR    0xE10000
-#define COLUMNPTR  0xE20000
-#define VRAMPTR    0xE30000
+#define LINE    0xE10000
+#define COLUMN  0xE10001
+#define TEXT_POSITION    0xE10002
 
 void _start(void)
 {
-	*((unsigned char*)LINEPTR) = 0;
-	*((unsigned char*)COLUMNPTR) = 0;
-	(*((unsigned int*)VRAMPTR)) = (unsigned int*)0xB8000;
-	clearscreen(0x1D);
-	putchar(0x41, 0x11);
-	while(1);
+	*((unsigned char*)LINE) = 0;
+	*((unsigned char*)COLUMN) = 0;
+	(*((unsigned int*)TEXT_POSITION)) = 0;
+	clearscreen(0);
+	
+	unsigned char* addr;
+	while(1) for (addr = 0x1000; addr <= 0xFFFF; addr++) putchar(*addr, 1); 
 }
 
-void putchar(unsigned char character, unsigned char color)
+void putchar(unsigned char ch, unsigned char cl)
 {
-	unsigned char* vram = *((unsigned int*)VRAMPTR);
-	*vram = color;
-	vram++;
-	*vram = character;
-	vram++; vram+=2;
-	*((unsigned int*)VRAMPTR) = (unsigned int*)vram;
+	putchar_offset(ch, cl, (*((unsigned int*)TEXT_POSITION))*2);
+	(*((unsigned int*)TEXT_POSITION))++;
+}
+
+void putchar_offset(unsigned char character, unsigned char color, unsigned int offset)
+{
+	volatile unsigned char* vram;
+	vram = 0xB8001+offset;
+        *vram = character;
+        vram++;
+        *vram = color;
 }
 
 void clearscreen(unsigned char c)
@@ -33,5 +39,3 @@ void clearscreen(unsigned char c)
                 vram++;
         }
 }
-
-
