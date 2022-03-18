@@ -5,7 +5,7 @@
 .word \base
 .byte \base >> 16
 .byte \access
-.byte \limit >> 16 & 0x0F | (\flags << 4)
+.byte \limit >> 16 & 0x0F | \flags << 4
 .byte \base >> 24
 
 .endm

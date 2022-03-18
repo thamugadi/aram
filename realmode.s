@@ -37,22 +37,13 @@ jmp 0x8:0x1FFF
 gdt:
 .byte 0,0,0,0,0,0,0,0
 gdt_cs:
-.gdt_entry 0x0000ffff 0 0b10011010 0b1100
+.gdt_entry 0xffff 0 0b10011010 0b1100
 gdt_ds:
-.word 0xFFFF
-.word 0x0000
-.byte 0x00
-.byte 0b10010010
-.byte 0b11001111
-.byte 0x00
-gdt_cs_ring0:
-.word 0xFFFF
-.word 0x0000
-.byte 0x00
-.byte 0b10011010
-.byte 0b11001001
-.byte 0x00
-
+.gdt_entry 0xffff 0 0b10010010 0b1100
+gdt_cs3:
+.gdt_entry 0xffff 0 0b11111010 0b1100
+gdt_ds3:
+.gdt_entry 0xffff 0 0b11110010 0b1100
 gdtend:
 gdtptr:
 .word gdtend - gdt - 1
