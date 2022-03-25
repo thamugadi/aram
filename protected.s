@@ -3,7 +3,7 @@
 .global readInput
 .global readKeyboardInput
 .include "macro.s"
-
+.PDE_32BIT_flags 0 0 1 1 1 1 1 1
 fill_page_dir:
 fill_pages:
 //to be done
