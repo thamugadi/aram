@@ -4,7 +4,7 @@
 SYSENTER_start:
 
 cmp ebx, 0xbeef
-je userland_start
+je c_start
 cmp ebx, 0xeeee
 je input
 cmp ebx, 0xaaaa
@@ -14,7 +14,7 @@ je read_wait_keyboard
 mov ecx, 0x8F000
 sysexit
 
-userland_start:
+c_start:
 mov esp, 0x8F000
 mov ebp, esp
 sub esp, 0xFFFF

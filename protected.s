@@ -2,6 +2,11 @@
 .code32
 .global readInput
 .global readKeyboardInput
+.include "macro.s"
+
+fill_page_dir:
+fill_pages:
+//to be done
 
 mov esp, 0x8F000
 jmp load
@@ -27,3 +32,4 @@ xor edx, edx
 add edx, dword ptr [esp]
 add edx, 2 #2 bytes for sysenter opcode
 ret
+
