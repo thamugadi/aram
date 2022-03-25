@@ -24,4 +24,13 @@
 mov eax, (0xFFFFFFFF & ((1 << 3) & \pwt)) & ((1 << 4) & \pcd) & (\page_dir_addr << 12)
 .endm
 
-
+//flags:eax, addr_32_39:ebx, addr_page:ecx
+.macro .PDE_32BIT 
+shl ebx, 13
+shl ecx, 22
+xor edx, edx
+or edx, eax
+or edx, ebx
+or edx, ecx
+and edx, 0xffc1ffff
+.endm //result:edx
