@@ -4,14 +4,21 @@
 #define COLUMN  0xE10001
 #define TEXT_POSITION    0xE10002
 
+
+
 void _start(void)
 {
 	*((unsigned char*)LINE) = 0;
 	*((unsigned char*)COLUMN) = 0;
 	(*((unsigned int*)TEXT_POSITION)) = 0;
+
+
 	clearscreen(0);
 	
 	unsigned char* addr;
+	putchar('a', 1);
+
+	while(1);
 	while(1) for (addr = 0x1000; addr <= 0xFFFF; addr++) putchar(*addr, 1); 
 }
 
