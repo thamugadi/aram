@@ -18,6 +18,7 @@
 
 .macro .CR3_32BIT page_dir_addr pcd pwt
 mov eax, (0xFFFFFFFF & ((1 << 3) & \pwt)) & ((1 << 4) & \pcd) & (\page_dir_addr << 12)
+mov cr3, eax
 .endm
 
 //flags:eax, addr_32_39:ebx, addr_page:ecx, directory:edx

@@ -1,4 +1,4 @@
-aram: boot0.bin boot1.bin boot2.bin boot3.bin
+aram: boot0.bin boot1.bin boot2.bin boot3.bin macro.s
 	dd conv=notrunc if=/dev/zero of=aram bs=1 count=512
 	(printf "55AA" | xxd -r -p) | dd conv=notrunc of=aram seek=510 bs=1 count=2
 	dd conv=notrunc if=boot0.bin of=aram seek=0 bs=1 count=510
