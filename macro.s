@@ -17,16 +17,31 @@
 .endm
 
 .macro .CR3_32BIT page_dir_addr pcd pwt
-mov eax, (0xFFFFFFFF & ((1 << 3) & \pwt)) & ((1 << 4) & \pcd) & (\page_dir_addr << 12)
+mov eax, 0xFFFFFFFF
+and eax, (~(1 << 3)) | (\pwt << 3)
+and eax, (~(1 << 4)) | (\pcd << 4)
+and eax, (~(1 << 12)) | (\page_dir_addr << 12)
 mov cr3, eax
 .endm
 
 //flags:eax, addr_32_39:ebx, addr_page:ecx, directory:edx
-.macro .PDE_32BIT page_directory_addr
+.macro .PDE_32BIT page_dir_addr
 shl ebx, 13
 shl ecx, 22
 or eax, ebx
 or eax, ecx
-add edx, \page_directory_addr 
+add edx, \page_dir_addr 
 mov dword ptr [edx], eax
+.endm
+
+.macro .PDE_32BIT_flags rw us pwt pcd a d g pat
+mov eax, 0xFFFF
+and eax, (~(1 << 1)) | (\rw << 1)
+and eax, (~(1 << 2)) | (\us << 2)
+and eax, (~(1 << 3)) | (\pwt << 3)
+and eax, (~(1 << 4)) | (\pcd << 4)
+and eax, (~(1 << 5)) | (\a << 5)
+and eax, (~(1 << 6)) | (\d << 6)
+and eax, (~(1 << 8)) | (\g << 5)
+and eax, (~(1 << 12))| (\pat << 5)
 .endm
