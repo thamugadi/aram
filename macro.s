@@ -35,7 +35,7 @@ mov dword ptr [edx], eax
 .endm
 
 .macro .PDE_32BIT_flags rw us pwt pcd a d g pat
-mov eax, 0xFFFF
+mov eax, 0x1FFF
 and eax, (~(1 << 1)) | (\rw << 1)
 and eax, (~(1 << 2)) | (\us << 2)
 and eax, (~(1 << 3)) | (\pwt << 3)
