@@ -24,7 +24,7 @@ and eax, (~(1 << 12)) | (\page_dir_addr << 12)
 mov cr3, eax
 .endm
 
-//flags:eax, addr_32_39:ebx, addr_page:ecx, directory:edx
+//flags:eax, addr_32_39:ebx, addr_page:ecx, entry:edx
 .macro .PDE_32BIT page_dir_addr
 shl ebx, 13
 shl ecx, 22
